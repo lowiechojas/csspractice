@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning CSS animation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Learn to animate using CSS with me.</h1><br>
+    <div class="tasks">
+        <h1>Task# 1</h1>
+        <p class="para1">This paragraph will fade in within 2 seconds.</p>        
+        
+        <div class="ball1"></div>
+       
+        <div class="side-bar show">
+            <button id="closeBtn" class="menu-close" onclick="toggleSidebar()" >X</button>
+                <ul>
+                    <li> One </li>
+                    <li> Two </li>
+                    <li> Three </li>
+                    <li> Four </li>
+                    <li> Five </li>
+                </ul>
+        </div>
+    
+    </div>
+
+    <div class="task4">
+        <button class="btn1" type="button">Click me</button>
+    </div>
+
+    <div class="textcolor">
+        <h1 class="cycle-text">Watch my colors change!</h1>
+    </div>
+    
+    <script>
+        const ball = document.querySelector('.ball1');
+        const sidebar = document.querySelector('.side-bar');
+        const closeBtn = document.getElementById('closeBtn');
+
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            sidebar.classList.add('hide');
+          });
+
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowUp') {
+            // Add the animation class
+            ball.classList.add('bounce-animation');
+
+            // Remove the class after animation ends so it can be triggered again
+            ball.addEventListener('animationend', () => {
+              ball.classList.remove('bounce-animation');
+            }, { once: true });
+          }
+        });
+
+        function toggleSidebar() {
+            if (sidebar.classList.contains('show')) {
+              sidebar.classList.remove('show');
+              sidebar.classList.add('hide');
+            } else {
+              sidebar.classList.remove('hide');
+              sidebar.classList.add('show');
+            }
+          }
+      </script>
+
+</body>
+</html>
